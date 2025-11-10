@@ -75,7 +75,7 @@ router.put("/:id", (req, res) => {
     pool.query(sql, params, (err, result) => {
         if (err) {
             console.error("Erro ao atualizar:", err);
-            return res.status(500).json({ error: "Erro interno." }); 
+            return res.status(500).json({ error: "Erro interno. Garante que o TÍTULO foi preenchido" }); 
         }
 
         if (result.rowCount === 0) {
