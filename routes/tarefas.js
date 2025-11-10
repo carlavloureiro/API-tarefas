@@ -53,7 +53,7 @@ router.post("/", (req, res) => {
     });
 });
 
-// Rota 4: Atualizar Tarefa 
+// Rota 4: Atualizar Tarefa (PUT)
 router.put("/:id", (req, res) => {
     const id = req.params.id;
     const { titulo, descricao, status } = req.body;
@@ -62,15 +62,21 @@ router.put("/:id", (req, res) => {
         return res.status(400).json({ mensagem: "Nenhum campo fornecido." });
     }
 
+
     const sql = 'UPDATE tarefas SET titulo = $1, descricao = $2, status = $3 WHERE id = $4';
-    const params = [titulo, descricao, status, id];
+    
+    const params = [
+        titulo, 
+        descricao || null, // Permite NULL para campos TEXT
+        status || 'pendente', // Garante que o status tenha um valor
+        id
+    ];
 
     pool.query(sql, params, (err, result) => {
         if (err) {
             console.error("Erro ao atualizar:", err);
-            return res.status(500).json({ error: "Erro interno." });
+            return res.status(500).json({ error: "Erro interno." }); 
         }
-        
 
         if (result.rowCount === 0) {
             return res.status(404).json({ mensagem: `Tarefa ${id} não encontrada.` });
