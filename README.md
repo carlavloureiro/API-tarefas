@@ -46,3 +46,6 @@ CREATE TABLE tarefas (
 O endpoint base para todas as operações é: **https://api-tarefas-xb8p.onrender.com/tarefas**
 
 Todas as requisições que enviam dados (POST, PUT) devem usar o Header Content-Type: application/json.
+
+<img width="469" height="308" alt="image" src="https://github.com/user-attachments/assets/fe711d0d-5908-4142-8408-d931718a290d" />
+
