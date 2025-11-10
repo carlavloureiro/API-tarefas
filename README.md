@@ -38,6 +38,7 @@ CREATE TABLE tarefas (
     status VARCHAR(50) DEFAULT 'pendente',
     dataCriacao DATE DEFAULT CURRENT_DATE
 );
+```
 
 🧭 Endpoints da API (CRUD Completo)
 -----------------------------------
